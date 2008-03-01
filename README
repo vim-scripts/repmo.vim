@@ -1,0 +1,39 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=2174
+
+Usage by example:
+
+  Type "5j" (without quotes) and then ";" to repeat "5j".
+  Type "hjkl" and then ";", it still repeats "5j".
+  Type "," to do "5k" (go in reverse direction).
+  Type "4k" and then ";" to repeat "4k".
+
+  The following motions (and scroll commands) are mapped per default:
+      j,k, h,l, Ctrl-E,Ctrl-Y, zh,zl
+
+Check out:
+
+  Visual mode, e.g. "V5j;;;;"
+  "f{char}" followed by ";," -- it should still work
+  Operator pending mode with ";" and ","
+
+Commands:
+
+  :RepmoMap {motion}|{reverse-motion} ...
+
+      Map {motion} to be repeatable with ";".  Use {reverse-motion} for ",".  Key notation is like in mappings.
+
+Options, with defaults:
+
+  " keys to be used for repeating (notation like in mappings), checked frequently:
+  :let repmo_key = ";"
+  :let repmo_revkey = ","
+
+  " map some default motions (argument string for :RepmoMap):
+  :let g:repmo_mapmotions = "j|k h|l <C-E>|<C-Y> zh|zl"
+
+Notes:
+
+  Your own remapping of a motion is silently discarded.
+  Your own remappings for "f", "F", "t" and "T" are kept.
+
+2009 Jun 03
