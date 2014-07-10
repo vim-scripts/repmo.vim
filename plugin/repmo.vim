@@ -167,7 +167,8 @@ func! <sid>MapRepeatMotion(vmode, key, revkey) "{{{
     endif
     let rawkey = eval('"'.escape(a:key, '\<"').'"')
     let whitecnt = (rawkey=~'^\s$' ? "1" : "")
-    exec "normal!" (cnt >= 1 ? cnt : whitecnt). rawkey
+    " NOTE: m' stores current position in jumplist
+    exec "normal! m'" (cnt >= 1 ? cnt : whitecnt). rawkey
 
     if s:lastkey != "" && s:lastkey != a:key
 	" restore "full" mapping
